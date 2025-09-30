@@ -1,2 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 @use "tailwindcss";
+
+/* Fanta Laranja */
+.bg-fanta-laranja {
+    background: linear-gradient(to bottom left, #ffb325, #b85000);
+}
+
+/* Fanta Uva */
+.bg-fanta-uva {
+    background: linear-gradient(to bottom left, #9757c5, #33095a);
+}
+
+/* Fanta Maracujá */
+.bg-fanta-maracuja {
+    background: linear-gradient(to bottom left, #FFD700, #aa6c00);
+}
+
+/* Fanta Abacaxi */
+.bg-fanta-abacaxi {
+    background: linear-gradient(to bottom left, #FFF176, #6d5d28);
+}
