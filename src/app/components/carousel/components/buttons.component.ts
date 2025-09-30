@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Inject, inject, Output } from "@angular/core";
-import { CarouselService } from "./carousel.service";
+import { CarouselService } from "../carousel.service";
 
 @Component({
     selector: 'app-buttons-carousel',
@@ -51,7 +51,7 @@ import { CarouselService } from "./carousel.service";
     
     `
 })
-export class ButtonsCompoenents{
+export class ButtonsCompoenents {
     carouselService = inject(CarouselService);
     private indexCarousel: number = 0;
 
@@ -61,7 +61,7 @@ export class ButtonsCompoenents{
     }
 
     prev() {
-        this.indexCarousel = this.indexCarousel === 0 ? 3 :  this.indexCarousel - 1
+        this.indexCarousel = this.indexCarousel === 0 ? 3 : this.indexCarousel - 1
         this.carouselService.changeCarousel(this.indexCarousel)
     }
 }

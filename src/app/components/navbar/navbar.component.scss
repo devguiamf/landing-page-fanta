@@ -18,3 +18,29 @@
 .shake {
   animation: shake 0.5s;
 }
+
+.rotate-animation-next {
+  animation: spin 0.4s ease-in-out;
+}
+
+.rotate-animation-prev {
+  animation: spin-reverse 0.4s ease-in-out;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}

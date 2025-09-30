@@ -1,14 +1,14 @@
 import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild, AfterViewInit, inject } from "@angular/core";
 import { gsap } from 'gsap';
 import { SplitText } from "gsap/SplitText";
-import { CarouselService } from "./carousel.service";
+import { CarouselService } from "../carousel.service";
 
 @Component({
     selector: 'app-text-carousel',
     template: `
             <div class="container px-5 py-3">
                 <h1 class="split mb-4 text-4xl font-extrabold leading-none tracking-tight text-white md:text-5xl lg:text-6xl">We invest in the world’s potential</h1>
-                <p class="split mb-6 text-lg font-normal text-gray-900 lg:text-xl text-black"> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+                <p class="split mb-6 text-lg font-normal text-gray-800 lg:text-xl"> is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
             </div>
         `,
     styles: `
@@ -23,12 +23,12 @@ import { CarouselService } from "./carousel.service";
 
     `
 })
-export class TextCarouselComponent implements OnInit{
+export class TextCarouselComponent implements OnInit {
     private splitTween!: gsap.core.Tween;
     private splitInstance: SplitText | null = null;
     private carouselService = inject(CarouselService);
 
-    constructor(){
+    constructor() {
         gsap.registerPlugin(SplitText);
     }
 

@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, ElementRef, inject, OnInit, signal,
 import { NavbarComponent } from "../../components/navbar/navbar.component";
 import { CarouselComponent } from "../../components/carousel/carousel.component";
 import { NgClass } from "@angular/common";
-import { CarouselService } from "../../components/carousel/components/carousel.service";
+import { CarouselService } from "../../components/carousel/carousel.service";
 
 
 @Component({
@@ -37,20 +37,18 @@ import { CarouselService } from "../../components/carousel/components/carousel.s
     imports: [NavbarComponent, CarouselComponent, NgClass],
     // providers: [CarouselService]
 })
-export class HomePage implements OnInit{
+export class HomePage implements OnInit {
 
     private mapCarousel = new Map<number, string>();
     protected carouselIndex: WritableSignal<number> = signal(0);
     protected shakeNavbar: WritableSignal<boolean> = signal(false);
     private carouselService = inject(CarouselService);
 
-    constructor(){
+    constructor() {
         this.mapCarousel.set(0, "bg-fanta-laranja")
         this.mapCarousel.set(1, "bg-fanta-uva")
-        this.mapCarousel.set(2, "bg-fanta-maracuja")
-        this.mapCarousel.set(3, "bg-fanta-abacaxi")
-
-        
+        this.mapCarousel.set(2, "bg-fanta-guarana")
+        this.mapCarousel.set(3, "bg-fanta-morango")
     }
 
     ngOnInit(): void {
@@ -67,5 +65,5 @@ export class HomePage implements OnInit{
         return this.mapCarousel.get(this.carouselIndex())
     }
 
-    animateBackground() {}
+    animateBackground() { }
 }
