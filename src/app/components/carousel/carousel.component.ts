@@ -9,7 +9,7 @@ import { LatinhaComponent } from "./components/latinha/latinha-carousel.componen
     template: `
         <div class="grid grid-cols-12 gap-0">
             
-            <app-image-container class="col-span-4" />
+            <app-image-container class="col-span-4 self-center" />
 
             <app-text-carousel class="col-span-3 self-center" />
             
