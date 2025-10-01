@@ -1,14 +1,15 @@
-import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild, AfterViewInit, inject } from "@angular/core";
+import { Component, inject, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewInit } from "@angular/core";
 import { gsap } from 'gsap';
 import { SplitText } from "gsap/SplitText";
 import { CarouselService } from "../carousel.service";
+import { JsonPipe } from "@angular/common";
 
 @Component({
     selector: 'app-text-carousel',
     template: `
             <div class="container px-5 py-3">
-                <h1 class="split mb-4 text-4xl font-extrabold leading-none tracking-tight text-white md:text-5xl lg:text-6xl">{{ textProps.title }}</h1>
-                <p class="split mb-6 text-lg font-normal text-gray-800 lg:text-xl"> {{ textProps.description }}</p>
+                <h1 #titleElement class="split mb-4 text-4xl font-extrabold leading-none tracking-tight text-white md:text-5xl lg:text-6xl">{{ textProps.title }}</h1>
+                <p #descElement class="split mb-6 text-lg font-normal text-gray-800 lg:text-xl"> {{ textProps.description }}</p>
             </div>
         `,
     styles: `
@@ -20,14 +21,17 @@ import { CarouselService } from "../carousel.service";
         .split * {
             will-change: transform;
         }
-
     `
-})
-export class TextCarouselComponent implements OnInit {
+    })
+export class TextCarouselComponent implements OnInit, AfterViewInit, OnDestroy {
+    @ViewChild('titleElement') titleElement!: ElementRef<HTMLElement>;
+    @ViewChild('descElement') descElement!: ElementRef<HTMLElement>;
+    
     private splitTween!: gsap.core.Tween;
     private splitInstance: SplitText | null = null;
     private carouselService = inject(CarouselService);
-    protected textProps!: {title: string, description: string}
+    protected textProps: {title: string, description: string} = { title: '', description: '' };
+    private isInitialized = false;
 
     constructor() {
         gsap.registerPlugin(SplitText);
@@ -36,20 +40,47 @@ export class TextCarouselComponent implements OnInit {
     ngOnInit(): void {
         this.carouselService.currentCarousel.subscribe({
             next: (value: number) => {
-                this.textProps = this.carouselService.getTextByCarouselIndex(value);
-                this.resetAndPlayAnimation();
+                const newText = this.carouselService.getTextByCarouselIndex(value);                
+                this.updateText(newText);
             }
-        })
+        });
+    }
+
+    ngAfterViewInit(): void {
+        this.isInitialized = true;
+        // Anima o conteúdo inicial
+        setTimeout(() => this.setupAnimation(), 0);
+    }
+
+    private updateText(newText: {title: string, description: string}): void {
+        this.textProps = newText;
+
+        if (!this.isInitialized) return;
+
+        // Limpa animações anteriores
+        if (this.splitInstance) {
+            this.splitInstance.revert();
+            this.splitInstance = null;
+        }
+
+        if (this.splitTween) {
+            this.splitTween.kill();
+        }
+
+        // Atualiza o texto diretamente no DOM
+        this.titleElement.nativeElement.textContent = newText.title;
+        this.descElement.nativeElement.textContent = newText.description;
+
+        // Recria a animação no próximo frame
+        this.setupAnimation()
     }
 
     private setupAnimation(): void {
-        if (this.splitInstance) {
-            this.splitInstance.revert();
-        }
+        const elements = [this.titleElement.nativeElement, this.descElement.nativeElement];
+        
+        gsap.set(elements, { opacity: 1 });
 
-        gsap.set(".split", { opacity: 1 });
-
-        this.splitInstance = SplitText.create(".split", {
+        this.splitInstance = new SplitText(elements, {
             type: "words, lines",
             linesClass: "line",
             mask: "lines"
@@ -60,19 +91,8 @@ export class TextCarouselComponent implements OnInit {
             yPercent: 100,
             opacity: 0,
             stagger: 0.1,
-            ease: "expo.out",
-            paused: true
+            ease: "expo.out"
         });
-
-        this.splitTween.play(0);
-    }
-
-    private resetAndPlayAnimation(): void {
-        if (this.splitTween) {
-            this.splitTween.restart(true, false);
-        } else {
-            this.setupAnimation();
-        }
     }
 
     ngOnDestroy(): void {
@@ -84,4 +104,3 @@ export class TextCarouselComponent implements OnInit {
         }
     }
 }
-
