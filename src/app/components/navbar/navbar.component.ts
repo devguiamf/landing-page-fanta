@@ -19,12 +19,12 @@ export class NavbarComponent {
   constructor(){
     this.carouselService.currentCarousel.subscribe({
       next: (value: number) => {
-        if (value === 0 && this.currentIndexCarousel === 3){
+        if (value === 0 && this.currentIndexCarousel === 2){
           this.animateSpinNext = true
           return this.currentIndexCarousel = value;
         }
 
-        if (value === 3 && this.currentIndexCarousel === 0){
+        if (value === 2 && this.currentIndexCarousel === 0){
           this.animateSpinPrev = true;
           return this.currentIndexCarousel = value;
         }

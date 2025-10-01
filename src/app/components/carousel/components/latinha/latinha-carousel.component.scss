@@ -1,0 +1,32 @@
+:host {
+    display: block;
+  }
+  
+  .carousel-container {
+    width: 100%; // ajuste conforme precisar
+    overflow: hidden;
+    margin: 0 auto;
+    position: relative;
+  }
+  
+  .carousel-track {
+    display: flex;
+    transition: transform 0.6s ease; // animação suave
+  }
+  
+  .carousel-track li {
+    flex: 0 0 100%; // cada item ocupa 100% do container
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .latinha-img {
+    width: 400px;
+    transition: transform 0.3s ease;
+  }
+  
+  .carousel-track li.active .latinha-img {
+    transform: scale(1); // aumenta só a do meio
+  }
+  

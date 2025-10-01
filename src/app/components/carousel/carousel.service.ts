@@ -37,17 +37,10 @@ export class CarouselService {
       }
     }
 
-    else if (index == 2) {
+    else {
       return {
         title: "Fanta Guárana",
         description: "O sabor que é a cara do Brasil! Fanta Guaraná traz a energia da fruta amazônica em uma bebida leve, gaseificada e super refrescante. Perfeita para momentos de descontração, encontros com amigos ou simplesmente para se sentir renovado."
-      }
-    }
-
-    else {
-      return {
-        title: "Fanta Morango",
-        description: "Doçura, frescor e diversão em uma só bebida! Fanta Morango combina o sabor natural da fruta com a leveza do refrigerante, criando uma experiência frutada e irresistível. Cada gole é uma explosão de sabor que transforma qualquer momento em algo especial."
       }
     }
   }

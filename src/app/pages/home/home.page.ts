@@ -10,7 +10,7 @@ import { CarouselService } from "../../components/carousel/carousel.service";
         <div  class="content flex flex-col gradient-background" [ngClass]="getBgClass()">
 
             <app-navbar 
-                class="pt-10 mb-50" 
+                class="pt-10" 
                 [shakeNavbar]="shakeNavbar()"
             />
 
@@ -25,7 +25,6 @@ import { CarouselService } from "../../components/carousel/carousel.service";
         }
 
         .content {
-            
             background-size: 200% 200%;
             background-position: top right;
             transition: background 0.5s ease; // fade rápido caso queira

@@ -1,10 +1,10 @@
 import { Component, inject } from "@angular/core";
-import { CarouselService } from "../carousel.service";
+import { CarouselService } from "../../carousel.service";
 
 @Component({
     selector: 'app-image-container',
     template: `
-        <img [src]="mapCarouselImages.get(currentIndexCarousel)">
+        <!-- <img [src]="mapCarouselImages.get(currentIndexCarousel)"> -->
     `
 })
 export class ImageContainerComponent {
@@ -13,10 +13,9 @@ export class ImageContainerComponent {
     protected mapCarouselImages = new Map<number, string>();
 
     constructor() {
-        this.mapCarouselImages.set(0, "image-1.png");
-        this.mapCarouselImages.set(1, "image-2.png");
+        this.mapCarouselImages.set(0, "latas/lata-laranja.png");
+        this.mapCarouselImages.set(1, "latas/lata-uva.png");
         this.mapCarouselImages.set(2, "image-3.png");
-        this.mapCarouselImages.set(3, "image-4.png");
 
         this.carouselService.currentCarousel.subscribe({
             next: (value: number) => {
