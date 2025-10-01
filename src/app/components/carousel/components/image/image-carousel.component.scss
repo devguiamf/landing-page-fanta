@@ -1,30 +1,26 @@
 
 .rotate-animation-next {
-    animation: spin 0.4s ease-in-out;
+  animation: spin 1s ease-in-out;
 }
 
 .rotate-animation-prev {
-    animation: spin-reverse 0.4s ease-in-out;
+  animation: spin-reverse 1s ease-in-out;
 }
 
 @keyframes spin {
-    from {
-        // transform: rotate(0deg);
-        opacity: 0;
-    }
-    to {
-        // transform: rotate(360deg);
-        opacity: 1;
-    }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes spin-reverse {
-    from {
-        // transform: rotate(360deg);
-        opacity: 0;
-    }
-    to {
-        // transform: rotate(0deg);
-        opacity: 1;
-    }
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
 }
