@@ -44,10 +44,10 @@ export class HomePage implements OnInit {
     private carouselService = inject(CarouselService);
 
     constructor() {
-        this.mapCarousel.set(0, "bg-fanta-laranja")
-        this.mapCarousel.set(1, "bg-fanta-uva")
-        this.mapCarousel.set(2, "bg-fanta-guarana")
-        this.mapCarousel.set(3, "bg-fanta-morango")
+        this.mapCarousel.set(0, "bg-primeiro")
+        this.mapCarousel.set(1, "bg-segundo")
+        this.mapCarousel.set(2, "bg-terceiro")
+        this.mapCarousel.set(3, "bg-quarto")
     }
 
     ngOnInit(): void {

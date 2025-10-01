@@ -24,10 +24,10 @@ import { CarouselService } from "../../carousel.service";
     protected mapCarouselImages = new Map<number, string>();
   
     constructor() {
-      this.mapCarouselImages.set(0, "latas/lata-laranja.png");
-      this.mapCarouselImages.set(1, "latas/lata-uva.png");
-      this.mapCarouselImages.set(2, "latas/lata-guarana.png");
-      this.mapCarouselImages.set(3, "latas/lata-morango.png");
+      this.mapCarouselImages.set(0, "latas/0.png");
+      this.mapCarouselImages.set(1, "latas/1.png");
+      this.mapCarouselImages.set(2, "latas/2.png");
+      this.mapCarouselImages.set(3, "latas/3.png");
   
       this.carouselService.currentCarousel.subscribe({
         next: (value: number) => {

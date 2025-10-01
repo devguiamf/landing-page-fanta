@@ -2,7 +2,6 @@ import { Component, inject, OnInit, OnDestroy, ViewChild, ElementRef, AfterViewI
 import { gsap } from 'gsap';
 import { SplitText } from "gsap/SplitText";
 import { CarouselService } from "../../carousel.service";
-import { JsonPipe } from "@angular/common";
 
 @Component({
     selector: 'app-text-carousel',

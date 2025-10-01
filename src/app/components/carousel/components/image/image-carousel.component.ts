@@ -23,10 +23,10 @@ export class ImageContainerComponent {
     protected animateSpinPrev: boolean = false;
 
     constructor() {
-        this.mapCarouselImages.set(0, "frutas/laranjas.png");
-        this.mapCarouselImages.set(1, "frutas/uvas.png");
-        this.mapCarouselImages.set(2, "frutas/guaranas.png");
-        this.mapCarouselImages.set(3, "frutas/morangos.png");
+        this.mapCarouselImages.set(0, "frutas/0.png");
+        this.mapCarouselImages.set(1, "frutas/1.png");
+        this.mapCarouselImages.set(2, "frutas/2.png");
+        this.mapCarouselImages.set(3, "frutas/3.png");
 
         this.carouselService.currentCarousel.subscribe({
             next: (value: number) => {

@@ -9,22 +9,22 @@
 
 @keyframes spin {
     from {
-        transform: rotate(0deg);
-        opacity: 0.5;
+        // transform: rotate(0deg);
+        opacity: 0;
     }
     to {
-        transform: rotate(360deg);
+        // transform: rotate(360deg);
         opacity: 1;
     }
 }
 
 @keyframes spin-reverse {
     from {
-        transform: rotate(360deg);
-        opacity: 0.5;
+        // transform: rotate(360deg);
+        opacity: 0;
     }
     to {
-        transform: rotate(0deg);
+        // transform: rotate(0deg);
         opacity: 1;
     }
 }

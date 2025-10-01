@@ -2,21 +2,21 @@
 @use "tailwindcss";
 
 /* Fanta Laranja */
-.bg-fanta-laranja {
+.bg-primeiro {
     background: linear-gradient(to bottom left, #fa8000, #272c94);
 }
 
 /* Fanta Uva */
-.bg-fanta-uva {
+.bg-segundo {
     background: linear-gradient(to bottom left, #9e1fa0, #272c94);
 }
 
 /* Fanta guarana */
-.bg-fanta-guarana {
-    background: linear-gradient(to bottom left, #41c122, #00602b);
+.bg-terceiro {
+    background: linear-gradient(to bottom left, #e3b501, #745d00);
 }
 
 /* Fanta Abacaxi */
-.bg-fanta-morango {
+.bg-quarto {
     background: linear-gradient(to bottom left, #ff5656, #800a0a);
 }
