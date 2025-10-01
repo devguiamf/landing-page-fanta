@@ -30,3 +30,24 @@
     transform: scale(1); // aumenta só a do meio
   }
   
+
+  .carousel-track li {
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0; /* Inicialmente invisível */
+    transition: opacity 0.6s ease, transform 0.3s ease; /* Transição suave para opacidade e escala */
+}
+
+.carousel-track li.active {
+    opacity: 1; /* Visível quando ativo */
+}
+
+.carousel-track li:not(.active) .latinha-img {
+    transform: scale(0.8); /* Imagens não ativas são um pouco menores */
+}
+
+.carousel-track li.active .latinha-img {
+    transform: scale(1); /* Aumenta a imagem ativa */
+}

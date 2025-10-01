@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, inject, OnInit, signal, ViewChild, WritableSignal } from "@angular/core";
+import { Component, inject, OnInit, signal, WritableSignal } from "@angular/core";
 import { NavbarComponent } from "../../components/navbar/navbar.component";
 import { CarouselComponent } from "../../components/carousel/carousel.component";
 import { NgClass } from "@angular/common";
@@ -63,6 +63,4 @@ export class HomePage implements OnInit {
     getBgClass() {
         return this.mapCarousel.get(this.carouselIndex())
     }
-
-    animateBackground() { }
 }
