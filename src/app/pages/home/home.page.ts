@@ -7,40 +7,22 @@ import { CarouselService } from "../../components/carousel/carousel.service";
 
 @Component({
     template: `
-        <div  class="content flex flex-col gradient-background" [ngClass]="getBgClass()">
-
-            <app-navbar 
-                class="pt-10" 
-                [shakeNavbar]="shakeNavbar()"
-            />
-
-            <app-carousel />
-
-        </div>
+    <div class="content flex flex-col gradient-background"
+        [ngClass]="[getBgClass(), animating() ? 'transitioning' : '']">
+        <app-navbar class="pt-10" [shakeNavbar]="shakeNavbar()" />
+        <app-carousel />
+    </div>
     `,
-    styles: `
-        :host {
-            display: block;
-  /* ocupa toda a largura */
-        }
-
-        .content {
-            background-size: 200% 200%;
-            background-position: top right;
-            transition: background 0.5s ease; // fade rápido caso queira
-            overflow: hidden;
-            height: 100vh; /* ocupa toda a tela */
-            width: 100vw;
-        }
-    `,
+    styleUrl: "./home.page.scss",
     imports: [NavbarComponent, CarouselComponent, NgClass],
     // providers: [CarouselService]
 })
 export class HomePage implements OnInit {
-
     private mapCarousel = new Map<number, string>();
     protected carouselIndex: WritableSignal<number> = signal(0);
     protected shakeNavbar: WritableSignal<boolean> = signal(false);
+    protected animating: WritableSignal<boolean> = signal(false); // NOVO
+    private transitioning!: string;
     private carouselService = inject(CarouselService);
 
     constructor() {
@@ -53,9 +35,14 @@ export class HomePage implements OnInit {
     ngOnInit(): void {
         this.carouselService.currentCarousel.subscribe({
             next: (value: number) => {
+                this.animating.set(true); // NOVO
                 this.carouselIndex.set(value);
                 this.shakeNavbar.set(true);
-                setTimeout(() => this.shakeNavbar.set(false), 500);
+
+                setTimeout(() => {
+                    this.shakeNavbar.set(false);
+                    this.animating.set(false); // NOVO
+                }, 1500); // tempo da animação
             }
         })
     }
